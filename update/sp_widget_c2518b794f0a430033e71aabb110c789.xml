@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <client_script><![CDATA[function() {
+  /* widget controller */
+  var c = this;
+}]]></client_script>
+        <controller_as>c</controller_as>
+        <css/>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>true</has_preview>
+        <id>systemoverview</id>
+        <internal>false</internal>
+        <link/>
+        <name>System Overview</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+  /* populate the 'data' object */
+  /* e.g., data.table = $sp.getValue('table'); */
+	system=[];
+	data.list=[];
+
+	// Get system list and Type
+	var syst = new GlideAggregate("x_agsa_sapcockpit_last_metric");
+	syst.addAggregate('COUNT', 'sid');
+	syst.query();
+	while(syst.next()) {
+		objs={};
+		objs.sid=syst.sid.toString();
+		if ((syst.sid.indexOf('H') > -1 ) && (syst.sid.indexOf('H')) <2 )
+			objs.type="HANA";
+		else 
+			objs.type="NETWEAVER";
+		var comp = new GlideRecord("x_agsa_sapcockpit_last_metric");
+		comp.get('sid',syst.sid.toString());
+		objs.company=comp.company.getDisplayValue();
+		system.push(objs);
+	}
+
+	// Now For each system, we need company, operational status, action, worst alarm severity
+	for (var i=0;i<system.length;i++) {
+		var obj={};
+		var getSev = new GlideRecord("x_agsa_sapcockpit_alarm");
+		getSev.addQuery('sid',system[i].sid);
+		getSev.addQuery('acknowledge','false');
+		getSev.orderByDesc('severity_code');
+		getSev.query();
+		if (getSev.next()) {
+			obj.sid=system[i].sid.toString();
+			obj.company=system[i].company;
+			obj.type=system[i].type;
+			obj.severity=getSev.severity.toString();
+		} else {
+			obj.sid=system[i].sid;
+			obj.company=system[i].company;
+			obj.type=system[i].type;
+			obj.severity='CLEAR';
+		}
+		// Get Last Alarm
+		var lastAlm = new GlideRecord("x_agsa_sapcockpit_alarm");
+		lastAlm.addQuery('sid',system[i].sid);
+		lastAlm.addQuery('acknowledge','false');
+		lastAlm.orderByDesc('sys_updated_on');
+		lastAlm.query();
+		if (lastAlm.next()) {
+			obj.lastAlm=lastAlm.sys_updated_on.getDisplayValue();
+			// Add color depending on delay for Alarms
+			//obj.value=compareDate(lastAlm.sys_updated_on,86400000);
+			obj.value=true;
+		} else {
+			obj.lastAlm='No Alarms';
+			obj.value=true;
+		}
+		// Get Last Metric
+		var lastUpd2 = new GlideRecord("x_agsa_sapcockpit_last_metric");
+		lastUpd2.addQuery('sid',system[i].sid);
+		lastUpd2.orderByDesc('sys_updated_on');
+		lastUpd2.query();
+		lastUpd2.next();
+		obj.lastMetr=lastUpd2.sys_updated_on.getDisplayValue();
+		// Add color depending on delay for Alarms
+		obj.value2=compareDate(lastUpd2.sys_updated_on,86400000);
+		// Add color depending on delay for Metrics
+		data.list.push(obj);
+	}
+	
+	function compareDate(date,threshold) {
+		var value=false;
+		var gdt1=new GlideDateTime();
+		gdt1.setValue(date);
+		var gdt2=new GlideDateTime();
+		var dur = GlideDateTime.subtract(gdt1, gdt2);
+		if (dur.getNumericValue() < 86400000) 
+			value=true;
+		return value;
+	}
+})();
+]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-10-27 12:54:22</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>c2518b794f0a430033e71aabb110c789</sys_id>
+        <sys_mod_count>96</sys_mod_count>
+        <sys_name>System Overview</sys_name>
+        <sys_package display_value="SAPCockpit" source="x_agsa_sapcockpit">e8dd70d1dbcacb407bd0f13daf96199c</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="SAPCockpit">e8dd70d1dbcacb407bd0f13daf96199c</sys_scope>
+        <sys_update_name>sp_widget_c2518b794f0a430033e71aabb110c789</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-11-15 14:22:47</sys_updated_on>
+        <template><![CDATA[<link href="f989cff14f4a430033e71aabb110c71b.cssdbx?" rel="stylesheet" type="text/css" />
+<table class='sstatus' sytle='width:30%;'>
+	<thead>
+		<tr>
+			<th class="sstatus"><a href="javascript:void(0)" ng-click="sortType = 'sid'; sortReverse = !sortReverse">System Name<span ng-show="sortType == 'col0' &amp;&amp; !sortReverse"></span><span ng-show="sortType == 'col0' &amp;&amp; sortReverse"/></a></th>
+ 			<th class="sstatus"><a href="javascript:void(0)" ng-click="sortType = 'type'; sortReverse = !sortReverse">Type<span ng-show="sortType == 'col0' &amp;&amp; !sortReverse"></span><span ng-show="sortType == 'col0' &amp;&amp; sortReverse"/></a></th>
+			<th class="sstatus"><a href="javascript:void(0)" ng-click="sortType = 'company'; sortReverse = !sortReverse">Company<span ng-show="sortType == 'col0' &amp;&amp; !sortReverse"></span><span ng-show="sortType == 'col1' &amp;&amp; sortReverse"/></a></th>
+			<th class="sstatus"><a href="javascript:void(0)">Actions<span ng-show="sortType == 'col0' &amp;&amp; !sortReverse"></span><span ng-show="sortType == 'col3' &amp;&amp; sortReverse"/></a></th>
+      <th class="sstatus"><a href="javascript:void(0)">Last Alarm</a></th>
+      <th class="sstatus"><a href="javascript:void(0)">Last Metric</a></th>
+			<th class="sstatus"><a href="javascript:void(0)" ng-click="sortType = 'severity'; sortReverse = !sortReverse">Worst Alarm Severity<span ng-show="sortType == 'col0' &amp;&amp; !sortReverse"></span><span ng-show="sortType == 'col4' &amp;&amp; sortReverse"/></a></th>
+		</tr>
+	</thead>  
+	<tr ng-repeat="item in data.list | orderBy:sortType:sortReverse | filter:searchAlarm">
+		<td class="sstatus"><a ng-href="" target="_blank">{{item.sid}}</a> </td>
+ 		<td class="sstatus">{{item.type}}</td>
+ 		<td class="sstatus" style='color:lightblue;' >{{item.company}}</td>
+		<td class="sstatus" ng-if='item.type == "NETWEAVER"' ><a style='color:lightblue;' href="sapcockpit?id=detailview&system={{item.sid}}&company={{item.company}}">Detail View</a></td>
+   	<td class="sstatus" ng-if='item.type == "HANA"' ><a style='color:lightblue;' href="sapcockpit?id=hanaview&system={{item.sid}}&company={{item.company}}">Detail View</a></td>
+   	<td class="sstatus" ng-if='item.value == true' style='color:lightgreen;text-align:center;'>{{item.lastAlm}}</td>
+   	<td class="sstatus" ng-if='item.value == false' style='color:#c71f3b;text-align:center;'>{{item.lastAlm}}</td>
+    <td class="sstatus" ng-if='item.value2 == true' style='color:lightgreen;text-align:center;'>{{item.lastMetr}}</td>
+   	<td class="sstatus" ng-if='item.value2 == false' style='color:#c71f3b;text-align:center;'>{{item.lastMetr}}</td>
+		<td class="sstatus" ng-if='item.severity == "CRITICAL"' style='color:white;background-color:#c71f3b;'><a ng-href="nav_to.do?uri=/x_agsa_sapcockpit_alarm_list.do?sysparm_query=acknowledge!%3Dtrue%5Esid={{item.sid}}" target="_blank">{{item.severity}}</a></td>
+		<td class="sstatus" ng-if='item.severity == "MAJOR"' style='background-color:#ff8700;'><a ng-href="nav_to.do?uri=/x_agsa_sapcockpit_alarm_list.do?sysparm_query=acknowledge!%3Dtrue%5Esid={{item.sid}}" target="_blank">{{item.severity}}</a></td>
+		<td class="sstatus" ng-if='item.severity == "MINOR"' style='background-color:#6b2cec;'><a ng-href="nav_to.do?uri=/x_agsa_sapcockpit_alarm_list.do?sysparm_query=acknowledge!%3Dtrue%5Esid={{item.sid}}" target="_blank">{{item.severity}}</a></td>
+		<td class="sstatus" ng-if='item.severity == "WARNING"' style='background-color:#ecd82c;'><a ng-href="nav_to.do?uri=/x_agsa_sapcockpit_alarm_list.do?sysparm_query=acknowledge!%3Dtrue%5Esid={{item.sid}}" target="_blank">{{item.severity}}</a></td>
+		<td class="sstatus" ng-if='item.severity == "INFORMATIONAL"' style='background-color:#3bb3c9;'><a ng-href="nav_to.do?uri=/x_agsa_sapcockpit_alarm_list.do?sysparm_query=acknowledge!%3Dtrue%5Esid={{item.sid}}" target="_blank">{{item.severity}}</a></td>
+   		<td class="sstatus" ng-if='item.severity == "CLEAR"' style='background-color:#3bc999;'><a ng-href="nav_to.do?uri=/x_agsa_sapcockpit_alarm_list.do?sysparm_query=acknowledge!%3Dtrue%5Esid={{item.sid}}" target="_blank">{{item.severity}}</a></td>
+   		<td class="sstatus" ng-if='item.severity == ""' style='background-color:#3bc999;'>NO ALARM</td>
+  </tr>
+</table>]]></template>
+    </sp_widget>
+</record_update>
