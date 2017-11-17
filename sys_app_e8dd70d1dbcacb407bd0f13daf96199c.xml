@@ -7,14 +7,14 @@
         <licensable>true</licensable>
         <license_model>none</license_model>
         <logo/>
-        <menu/>
+        <menu display_value="SAPCockpit">0354c018db9a0b007bd0f13daf9619e7</menu>
         <name>SAPCockpit</name>
         <private>false</private>
         <restrict_table_access>false</restrict_table_access>
         <runtime_access_tracking>permissive</runtime_access_tracking>
         <scope>x_agsa_sapcockpit</scope>
         <scoped_administration>false</scoped_administration>
-        <short_description/>
+        <short_description>Monitor your SAP systems</short_description>
         <source>x_agsa_sapcockpit</source>
         <store_correlation_id/>
         <store_url/>
@@ -23,12 +23,12 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2017-10-25 14:01:56</sys_created_on>
         <sys_id>e8dd70d1dbcacb407bd0f13daf96199c</sys_id>
-        <sys_mod_count>0</sys_mod_count>
+        <sys_mod_count>2</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-10-25 14:01:56</sys_updated_on>
+        <sys_updated_on>2017-11-16 10:13:52</sys_updated_on>
         <template/>
         <trackable>true</trackable>
-        <user_role/>
+        <user_role display_value="x_agsa_sapcockpit.user" name="x_agsa_sapcockpit.user">8d6e3895db0ecb407bd0f13daf9619a9</user_role>
         <vendor/>
         <vendor_prefix/>
         <version>1.0.0</version>
