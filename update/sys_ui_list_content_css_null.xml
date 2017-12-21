@@ -1,51 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <record_update>
     <sys_ui_list parent="" relationship="" sys_domain="global" table="content_css" version="2" view="">
-        <sys_ui_list_element action="INSERT_OR_UPDATE">
+        <sys_ui_list action="INSERT_OR_UPDATE">
             <average_value>false</average_value>
-            <element>name</element>
-            <list_id display_value="content_css" element="NULL" name="content_css" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">2558617e0a0a0b8d0083c43b2151684d</list_id>
+            <element/>
             <max_value>false</max_value>
             <min_value>false</min_value>
-            <position>0</position>
+            <name>sys_metadata</name>
+            <parent/>
+            <position/>
+            <relationship/>
             <sum>false</sum>
-            <sys_created_by>pat.casey</sys_created_by>
-            <sys_created_on>2010-07-30 21:53:23</sys_created_on>
-            <sys_id>255861940a0a0b8d00862efe737ba537</sys_id>
+            <sys_class_name>sys_ui_list</sys_class_name>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2014-10-08 04:52:14</sys_created_on>
+            <sys_customer_update>false</sys_customer_update>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>bc8e8f32d723210092610eca5e610302</sys_id>
             <sys_mod_count>0</sys_mod_count>
-            <sys_updated_by>pat.casey</sys_updated_by>
-            <sys_updated_on>2010-07-30 21:53:23</sys_updated_on>
-        </sys_ui_list_element>
-        <sys_ui_list_element action="INSERT_OR_UPDATE">
-            <average_value>false</average_value>
-            <element>type</element>
-            <list_id display_value="content_css" element="NULL" name="content_css" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">2558617e0a0a0b8d0083c43b2151684d</list_id>
-            <max_value>false</max_value>
-            <min_value>false</min_value>
-            <position>1</position>
-            <sum>false</sum>
-            <sys_created_by>pat.casey</sys_created_by>
-            <sys_created_on>2010-07-30 21:53:23</sys_created_on>
-            <sys_id>255861a60a0a0b8d000d246014a77a67</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_updated_by>pat.casey</sys_updated_by>
-            <sys_updated_on>2010-07-30 21:53:23</sys_updated_on>
-        </sys_ui_list_element>
-        <sys_ui_list_element action="INSERT_OR_UPDATE">
-            <average_value>false</average_value>
-            <element>description</element>
-            <list_id display_value="content_css" element="NULL" name="content_css" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">2558617e0a0a0b8d0083c43b2151684d</list_id>
-            <max_value>false</max_value>
-            <min_value>false</min_value>
-            <position>2</position>
-            <sum>false</sum>
-            <sys_created_by>pat.casey</sys_created_by>
-            <sys_created_on>2010-07-30 21:53:23</sys_created_on>
-            <sys_id>255861ab0a0a0b8d009ff0533522cc26</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_updated_by>pat.casey</sys_updated_by>
-            <sys_updated_on>2010-07-30 21:53:23</sys_updated_on>
-        </sys_ui_list_element>
+            <sys_name>sys_metadata</sys_name>
+            <sys_package display_value="Glide Metadata" source="com.glide.metadata">02f8cee1db22320008ab71700f96191d</sys_package>
+            <sys_policy/>
+            <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+            <sys_scope display_value="Global">global</sys_scope>
+            <sys_update_name>sys_ui_list_sys_metadata_null</sys_update_name>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2014-10-08 04:52:14</sys_updated_on>
+            <sys_user/>
+            <view display_value="Default view" name="NULL">Default view</view>
+            <view_name/>
+        </sys_ui_list>
         <sys_ui_list action="INSERT_OR_UPDATE">
             <average_value>false</average_value>
             <element/>
@@ -64,12 +49,12 @@
             <sys_domain_path>/</sys_domain_path>
             <sys_id>d12d1abedb8607007bd0f13daf961968</sys_id>
             <sys_mod_count>0</sys_mod_count>
-            <sys_name/>
-            <sys_package/>
+            <sys_name>content_css</sys_name>
+            <sys_package display_value="SAPCockpit" source="x_agsa_sapcockpit">e8dd70d1dbcacb407bd0f13daf96199c</sys_package>
             <sys_policy/>
             <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
             <sys_scope display_value="SAPCockpit">e8dd70d1dbcacb407bd0f13daf96199c</sys_scope>
-            <sys_update_name/>
+            <sys_update_name>sys_ui_list_content_css_null</sys_update_name>
             <sys_updated_by>admin</sys_updated_by>
             <sys_updated_on>2017-10-30 12:49:17</sys_updated_on>
             <sys_user display_value="System Administrator">6816f79cc0a8016401c5a33be04be441</sys_user>

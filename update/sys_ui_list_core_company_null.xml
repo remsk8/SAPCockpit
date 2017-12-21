@@ -1,96 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <record_update>
     <sys_ui_list parent="" relationship="" sys_domain="global" table="core_company" version="2" view="">
-        <sys_ui_list_element action="INSERT_OR_UPDATE">
-            <average_value>false</average_value>
-            <element>name</element>
-            <list_id display_value="core_company" element="NULL" name="core_company" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">a1bb379f0a0006411bc822a022a9f1ed</list_id>
-            <max_value>false</max_value>
-            <min_value>false</min_value>
-            <position>0</position>
-            <sum>false</sum>
-            <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2011-04-29 14:48:11</sys_created_on>
-            <sys_id>a1bb37a00a0006415946d13d055ba07b</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2011-04-29 14:48:11</sys_updated_on>
-        </sys_ui_list_element>
-        <sys_ui_list_element action="INSERT_OR_UPDATE">
-            <average_value>false</average_value>
-            <element>street</element>
-            <list_id display_value="core_company" element="NULL" name="core_company" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">a1bb379f0a0006411bc822a022a9f1ed</list_id>
-            <max_value>false</max_value>
-            <min_value>false</min_value>
-            <position>1</position>
-            <sum>false</sum>
-            <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2011-04-29 14:48:11</sys_created_on>
-            <sys_id>a1bb37a00a00064177ac91704a805a9a</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2011-04-29 14:48:11</sys_updated_on>
-        </sys_ui_list_element>
-        <sys_ui_list_element action="INSERT_OR_UPDATE">
-            <average_value>false</average_value>
-            <element>city</element>
-            <list_id display_value="core_company" element="NULL" name="core_company" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">a1bb379f0a0006411bc822a022a9f1ed</list_id>
-            <max_value>false</max_value>
-            <min_value>false</min_value>
-            <position>2</position>
-            <sum>false</sum>
-            <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2011-04-29 14:48:11</sys_created_on>
-            <sys_id>a1bb37a10a000641347baf5799f98d76</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2011-04-29 14:48:11</sys_updated_on>
-        </sys_ui_list_element>
-        <sys_ui_list_element action="INSERT_OR_UPDATE">
-            <average_value>false</average_value>
-            <element>zip</element>
-            <list_id display_value="core_company" element="NULL" name="core_company" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">a1bb379f0a0006411bc822a022a9f1ed</list_id>
-            <max_value>false</max_value>
-            <min_value>false</min_value>
-            <position>3</position>
-            <sum>false</sum>
-            <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2011-04-29 14:48:11</sys_created_on>
-            <sys_id>a1bb37a20a000641357f27f4600411dc</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2011-04-29 14:48:11</sys_updated_on>
-        </sys_ui_list_element>
-        <sys_ui_list_element action="INSERT_OR_UPDATE">
-            <average_value>false</average_value>
-            <element>phone</element>
-            <list_id display_value="core_company" element="NULL" name="core_company" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">a1bb379f0a0006411bc822a022a9f1ed</list_id>
-            <max_value>false</max_value>
-            <min_value>false</min_value>
-            <position>4</position>
-            <sum>false</sum>
-            <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2011-04-29 14:48:11</sys_created_on>
-            <sys_id>a1bb37a20a0006417f78efd3179381a6</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2011-04-29 14:48:11</sys_updated_on>
-        </sys_ui_list_element>
-        <sys_ui_list_element action="INSERT_OR_UPDATE">
-            <average_value>false</average_value>
-            <element>sys_updated_on</element>
-            <list_id display_value="core_company" element="NULL" name="core_company" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">a1bb379f0a0006411bc822a022a9f1ed</list_id>
-            <max_value>false</max_value>
-            <min_value>false</min_value>
-            <position>5</position>
-            <sum>false</sum>
-            <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2011-04-29 14:48:11</sys_created_on>
-            <sys_id>a1bb37a30a0006413ecbacc3ef550747</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2011-04-29 14:48:11</sys_updated_on>
-        </sys_ui_list_element>
         <sys_ui_list action="INSERT_OR_UPDATE">
             <average_value>false</average_value>
             <element/>
@@ -109,12 +19,12 @@
             <sys_domain_path>/</sys_domain_path>
             <sys_id>416e771d4f9a0f0033e71aabb110c7a4</sys_id>
             <sys_mod_count>0</sys_mod_count>
-            <sys_name/>
-            <sys_package/>
+            <sys_name>core_company</sys_name>
+            <sys_package display_value="SAPCockpit" source="x_agsa_sapcockpit">e8dd70d1dbcacb407bd0f13daf96199c</sys_package>
             <sys_policy/>
             <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
             <sys_scope display_value="SAPCockpit">e8dd70d1dbcacb407bd0f13daf96199c</sys_scope>
-            <sys_update_name/>
+            <sys_update_name>sys_ui_list_core_company_null</sys_update_name>
             <sys_updated_by>admin</sys_updated_by>
             <sys_updated_on>2017-11-07 14:18:59</sys_updated_on>
             <sys_user display_value="System Administrator">6816f79cc0a8016401c5a33be04be441</sys_user>

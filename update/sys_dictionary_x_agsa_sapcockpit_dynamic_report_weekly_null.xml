@@ -53,16 +53,16 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2017-11-02 16:55:37</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
-        <sys_id>4b42faf7db4ac7007bd0f13daf961979</sys_id>
+        <sys_id>e70b2fafdb078b407bd0f13daf96190e</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>x_agsa_sapcockpit_dynamic_report_weekly</sys_name>
         <sys_package display_value="SAPCockpit" source="x_agsa_sapcockpit">e8dd70d1dbcacb407bd0f13daf96199c</sys_package>
         <sys_policy/>
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="SAPCockpit">e8dd70d1dbcacb407bd0f13daf96199c</sys_scope>
-        <sys_update_name>sys_dictionary_x_agsa_sapcockpit_dynamic_report_weekly_null</sys_update_name>
-        <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-11-02 16:55:37</sys_updated_on>
+        <sys_update_name>sys_dictionary_x_agsa_sapcockpit_dynamic_report_weekly_NULL</sys_update_name>
+        <sys_updated_by>system</sys_updated_by>
+        <sys_updated_on>2017-12-21 19:28:07</sys_updated_on>
         <table_reference>false</table_reference>
         <text_index>false</text_index>
         <unique>false</unique>
