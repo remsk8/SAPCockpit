@@ -10,14 +10,14 @@
         <chart_border_color display_value="LightGrey">65b30308a9fe3dba01ebaa03e87e7cd3</chart_border_color>
         <chart_border_radius>0</chart_border_radius>
         <chart_border_width>1</chart_border_width>
-        <chart_height>450</chart_height>
-        <chart_size>medium</chart_size>
+        <chart_height>400</chart_height>
+        <chart_size>small</chart_size>
         <chart_title/>
         <chart_title_color display_value="Black">65b30218a9fe3dba0120df8611520d97</chart_title_color>
         <chart_title_size>16</chart_title_size>
         <chart_title_x_position>0</chart_title_x_position>
         <chart_title_y_position>0</chart_title_y_position>
-        <chart_width>600</chart_width>
+        <chart_width>300</chart_width>
         <color display_value="Default Color">de699435d7033100b4964ebfae610331</color>
         <color_palette display_value="Default UI14">aa558ab3d7732100fa6c0c12ce610377</color_palette>
         <colors/>
@@ -25,7 +25,7 @@
         <compute_percent>aggregate</compute_percent>
         <content/>
         <created_by_user display_value="System Administrator">6816f79cc0a8016401c5a33be04be441</created_by_user>
-        <custom_chart_size>false</custom_chart_size>
+        <custom_chart_size>true</custom_chart_size>
         <custom_chart_title_position>false</custom_chart_title_position>
         <decimal_precision>0</decimal_precision>
         <description/>
@@ -35,18 +35,21 @@
         <display_row_lines>false</display_row_lines>
         <donut_width_percent>50</donut_width_percent>
         <exp_report_attrs>true</exp_report_attrs>
-        <field>module</field>
+        <field>sid</field>
         <field_list/>
-        <filter table="x_agsa_sapcockpit_alarm">acknowledge=false^EQ^GROUPBYmodule<item endquery="false" field="acknowledge" goto="false" newquery="false" operator="=" or="false" value="false"/>
+        <filter table="x_agsa_sapcockpit_alarm">acknowledge=false^raise_timeONToday@javascript:gs.beginningOfToday()@javascript:gs.endOfToday()^EQ^GROUPBYsid^EQ^TRENDBYsys_updated_on,hour<item endquery="false" field="acknowledge" goto="false" newquery="false" operator="=" or="false" value="false"/>
+            <item endquery="false" field="raise_time" goto="false" newquery="false" operator="ON" or="false" value="Today@javascript:gs.beginningOfToday()@javascript:gs.endOfToday()"/>
             <item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/>
-            <item endquery="false" field="" goto="false" newquery="false" operator="GROUPBY" or="false" value="module"/>
+            <item endquery="false" field="" goto="false" newquery="false" operator="GROUPBY" or="false" value="sid"/>
+            <item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/>
+            <item endquery="false" field="" goto="false" newquery="false" operator="TRENDBY" or="false" value="sys_updated_on,hour"/>
         </filter>
         <from/>
         <funnel_neck_percent>30</funnel_neck_percent>
         <gauge_autoscale>true</gauge_autoscale>
         <group/>
         <import_table/>
-        <interval>year</interval>
+        <interval>hour</interval>
         <is_published>false</is_published>
         <is_scheduled>false</is_scheduled>
         <legend_background_color display_value="White">65b303c7a9fe3dba00629aff95ee3597</legend_background_color>
@@ -63,7 +66,7 @@
         <map_source/>
         <orderby_list/>
         <other_threshold>-2</other_threshold>
-        <others>true</others>
+        <others>false</others>
         <page_hdrftr display_value="Default">0ecdb03fc3613000cef73b251eba8f5e</page_hdrftr>
         <pivot_expanded>true</pivot_expanded>
         <report_drilldown/>
@@ -92,22 +95,22 @@
         <sys_created_on>2017-10-27 12:51:54</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>12f04b394f0a430033e71aabb110c7a0</sys_id>
-        <sys_mod_count>3</sys_mod_count>
-        <sys_name>ALARM Count by Module</sys_name>
+        <sys_mod_count>10</sys_mod_count>
+        <sys_name>ALARM Evolution on Today per hours</sys_name>
         <sys_package display_value="SAPCockpit" source="x_agsa_sapcockpit">e8dd70d1dbcacb407bd0f13daf96199c</sys_package>
         <sys_policy/>
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="SAPCockpit">e8dd70d1dbcacb407bd0f13daf96199c</sys_scope>
         <sys_update_name>sys_report_12f04b394f0a430033e71aabb110c7a0</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-11-15 16:05:18</sys_updated_on>
+        <sys_updated_on>2017-12-29 18:07:21</sys_updated_on>
         <table>x_agsa_sapcockpit_alarm</table>
-        <title>ALARM Count by Module</title>
+        <title>ALARM Evolution on Today per hours</title>
         <title_horizontal_alignment>center</title_horizontal_alignment>
         <title_vertical_alignment>top</title_vertical_alignment>
         <to/>
-        <trend_field/>
-        <type>horizontal_bar</type>
+        <trend_field>sys_updated_on</trend_field>
+        <type>spline</type>
         <upper_limit/>
         <use_color_heatmap>false</use_color_heatmap>
         <use_color_palette>false</use_color_palette>
@@ -117,7 +120,7 @@
         <x_axis_grid_dotted>false</x_axis_grid_dotted>
         <x_axis_grid_width>1</x_axis_grid_width>
         <x_axis_label_bold>false</x_axis_label_bold>
-        <x_axis_label_color display_value="Black">65b30218a9fe3dba0120df8611520d97</x_axis_label_color>
+        <x_axis_label_color/>
         <x_axis_label_size>11</x_axis_label_size>
         <x_axis_opposite>false</x_axis_opposite>
         <x_axis_title/>
@@ -130,7 +133,7 @@
         <y_axis_grid_dotted>false</y_axis_grid_dotted>
         <y_axis_grid_width>1</y_axis_grid_width>
         <y_axis_label_bold>false</y_axis_label_bold>
-        <y_axis_label_color display_value="Black">65b30218a9fe3dba0120df8611520d97</y_axis_label_color>
+        <y_axis_label_color/>
         <y_axis_label_size>11</y_axis_label_size>
         <y_axis_opposite>false</y_axis_opposite>
         <y_axis_title/>

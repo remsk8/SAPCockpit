@@ -46,16 +46,11 @@
         <script><![CDATA[(function() {
   /* populate the 'data' object */
   /* e.g., data.table = $sp.getValue('table'); */
-	obj={};
-	data.list=[];
 	hana_list=[];
 	netw_list=[];
 	data.hanadb=gs.getProperty("x_agsa_sapcockpit.HANA.DB").split(',');
 	i=0;
 	j=0;
-	k=0;
-	data.header=[];
-	data.headern=[];
 	data.line=[];
 	data.lineh=[];
 	data.system=[]
@@ -70,22 +65,6 @@
 			data.system.push(syst.sid.toString());
 		else 
 			data.systemn.push(syst.sid.toString());
-	}
-	
-	// Building table line header
-	objs={}
-	objs.system='MODULE'
-	data.headern.push(objs);
-	data.header.push(objs);
-	for(i=0;i<data.system.length;i++) {
-		objs={};
-		objs.system=data.system[i];
-		data.header.push(objs);
-	}
-	for(i=0;i<data.systemn.length;i++) {
-		objs={};
-		objs.system=data.systemn[i];
-		data.headern.push(objs);
 	}
 	
 	//Building Module List NETWEAVER
@@ -141,23 +120,23 @@
 			sever=getSeverity(hana_list[i],data.system[j]);
 			if (sever == 5) {
 				objs[data.system[j]].bck = 'bckCritical';
-				objs[data.system[j]].value = "Critical ( "+getAlmCount(netw_list[i],data.system[j])+" )";
+				objs[data.system[j]].value = "Critical ( "+getAlmCount(hana_list[i],data.system[j])+" )";
 			}
 			if (sever == 4) {
 				objs[data.system[j]].bck = 'bckMajor';
-				objs[data.system[j]].value = "Major ( "+getAlmCount(netw_list[i],data.system[j])+" )";
+				objs[data.system[j]].value = "Major ( "+getAlmCount(hana_list[i],data.system[j])+" )";
 			}
 			if (sever == 3) {
 				objs[data.system[j]].bck = 'bckMinor';
-				objs[data.system[j]].value = "Minor ( "+getAlmCount(netw_list[i],data.system[j])+" )";
+				objs[data.system[j]].value = "Minor ( "+getAlmCount(hana_list[i],data.system[j])+" )";
 			}
 			if (sever == 2) {
 				objs[data.system[j]].bck = 'bckWarning';
-				objs[data.system[j]].value = "Warning ( "+getAlmCount(netw_list[i],data.system[j])+" )";
+				objs[data.system[j]].value = "Warning ( "+getAlmCount(hana_list[i],data.system[j])+" )";
 			}
 			if (sever == 1) {
 				objs[data.system[j]].bck = 'bckInfo';
-				objs[data.system[j]].value = "Info ( "+getAlmCount(netw_list[i],data.system[j])+" )";
+				objs[data.system[j]].value = "Info ( "+getAlmCount(hana_list[i],data.system[j])+" )";
 			}
 			if (sever == 0) {
 				objs[data.system[j]].bck = 'bckOk';
@@ -167,67 +146,20 @@
 	data.lineh.push(objs);
 	}
 	data.colsh = Object.keys(data.lineh[0]);
-	/*
-		//Building Module List NETWEAVER
-	count = new GlideRecord('x_agsa_sapcockpit_config');
-	count.get('name','HANA MODULE LIST');
-	hana_list=count.data.split(',');
-	for (i=0;i<hana_list.length;i++) {
-		objs={};
-		objs.module=netw_list[i];
-		for (j=0;j<data.systemn.length;j++) {
-			var cnt = new GlideAggregate('x_agsa_sapcockpit_alarm');
-			bck = "bck";
-			cnt.addQuery('sid',data.systemn[j]);
-			cnt.addQuery('module',netw_list[i]);
-			cnt.addQuery('acknowledge',false);
-			cnt.addAggregate('COUNT');
-			cnt.query(); 
-			cnt.next();
-			var getSev = new GlideRecord("x_agsa_sapcockpit_alarm");
-			getSev.addQuery('sid',data.systemn[j]);
-			getSev.addQuery('module',netw_list[i]);
-			getSev.addQuery('acknowledge','false');
-			getSev.orderByDesc('severity_code');
-			getSev.query();
-			objs[data.systemn[j]] = {};
-			objs[data.systemn[j]].sid = data.systemn[j];
-			if (getSev.next()) {
-				objs[data.systemn[j]].value = getSev.severity.toString()+" ( "+cnt.getAggregate('COUNT')+" )";
-				if (getSev.severity_code == 5)
-					objs[data.systemn[j]].bck = 'bckCritical';
-				if (getSev.severity_code == 4)
-					objs[data.systemn[j]].bck = 'bckMajor';
-				if (getSev.severity_code == 3)
-					objs[data.systemn[j]].bck = 'bckMinor';
-				if (getSev.severity_code == 2)
-					objs[data.systemn[j]].bck = 'bckWarning';
-				if (getSev.severity_code == 1)
-					objs[data.systemn[j]].bck = 'bckOk';
-			} else {
-				objs[data.systemn[j]].value='OK';
-				objs[data.systemn[j]].bck = 'bckOk';
-			}
-		}
-	data.line.push(objs);
+
+	function getAlmCount(mod,sid) {
+		var cnt = new GlideAggregate('x_agsa_sapcockpit_alarm');
+		cnt.addQuery('sid',sid);
+		cnt.addQuery('module',mod);
+		cnt.addQuery('acknowledge','false');
+		cnt.addAggregate('COUNT');
+		cnt.query(); 
+		if (cnt.next()) 
+			return cnt.getAggregate('COUNT')
+		return 0;
 	}
-	data.cols = Object.keys(data.line[0]);
 	
-	*/
-	
-function getAlmCount(mod,sid) {
-	var cnt = new GlideAggregate('x_agsa_sapcockpit_alarm');
-	cnt.addQuery('sid',sid);
-	cnt.addQuery('module',mod);
-	cnt.addQuery('acknowledge',false);
-	cnt.addAggregate('COUNT');
-	cnt.query(); 
-	if (cnt.next()) 
-		return cnt.getAggregate('COUNT')
-	return 0;
-}
-	
-function getSeverity(mod,sid) {
+	function getSeverity(mod,sid) {
 		var getSev = new GlideRecord("x_agsa_sapcockpit_alarm");
 		getSev.addQuery('sid',sid);
 		getSev.addQuery('module',mod);
@@ -237,8 +169,7 @@ function getSeverity(mod,sid) {
 		if (getSev.next()) 
 			return getSev.severity_code;
 		return 0;
-}
-	
+	}	
 	
 })();]]></script>
         <servicenow>false</servicenow>
@@ -247,7 +178,7 @@ function getSeverity(mod,sid) {
         <sys_created_on>2017-12-11 13:24:26</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>e9f7b654db0fcf007bd0f13daf961975</sys_id>
-        <sys_mod_count>270</sys_mod_count>
+        <sys_mod_count>275</sys_mod_count>
         <sys_name>AngDynamicSystemOverview</sys_name>
         <sys_package display_value="SAPCockpit" source="x_agsa_sapcockpit">e8dd70d1dbcacb407bd0f13daf96199c</sys_package>
         <sys_policy/>
@@ -255,7 +186,7 @@ function getSeverity(mod,sid) {
         <sys_scope display_value="SAPCockpit">e8dd70d1dbcacb407bd0f13daf96199c</sys_scope>
         <sys_update_name>sp_widget_e9f7b654db0fcf007bd0f13daf961975</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-12-21 18:49:34</sys_updated_on>
+        <sys_updated_on>2017-12-22 14:59:15</sys_updated_on>
         <template><![CDATA[<link href="f989cff14f4a430033e71aabb110c71b.cssdbx?" rel="stylesheet" type="text/css" />
 <br/>
 <div ng-controller="getData">
