@@ -37,8 +37,9 @@
         <exp_report_attrs>true</exp_report_attrs>
         <field>sid</field>
         <field_list/>
-        <filter table="x_agsa_sapcockpit_alarm">acknowledge=false^raise_timeONToday@javascript:gs.beginningOfToday()@javascript:gs.endOfToday()^EQ^GROUPBYsid^EQ^TRENDBYsys_updated_on,hour<item endquery="false" field="acknowledge" goto="false" newquery="false" operator="=" or="false" value="false"/>
+        <filter table="x_agsa_sapcockpit_alarm">acknowledge=false^raise_timeONToday@javascript:gs.beginningOfToday()@javascript:gs.endOfToday()^EQ^EQ^GROUPBYsid^EQ^TRENDBYsys_updated_on,hour<item endquery="false" field="acknowledge" goto="false" newquery="false" operator="=" or="false" value="false"/>
             <item endquery="false" field="raise_time" goto="false" newquery="false" operator="ON" or="false" value="Today@javascript:gs.beginningOfToday()@javascript:gs.endOfToday()"/>
+            <item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/>
             <item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/>
             <item endquery="false" field="" goto="false" newquery="false" operator="GROUPBY" or="false" value="sid"/>
             <item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/>
@@ -95,17 +96,17 @@
         <sys_created_on>2017-10-27 12:51:54</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>12f04b394f0a430033e71aabb110c7a0</sys_id>
-        <sys_mod_count>10</sys_mod_count>
-        <sys_name>ALARM Evolution on Today per hours</sys_name>
+        <sys_mod_count>11</sys_mod_count>
+        <sys_name>Alarms Count per hours</sys_name>
         <sys_package display_value="SAPCockpit" source="x_agsa_sapcockpit">e8dd70d1dbcacb407bd0f13daf96199c</sys_package>
         <sys_policy/>
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="SAPCockpit">e8dd70d1dbcacb407bd0f13daf96199c</sys_scope>
         <sys_update_name>sys_report_12f04b394f0a430033e71aabb110c7a0</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-12-29 18:07:21</sys_updated_on>
+        <sys_updated_on>2018-01-17 15:12:56</sys_updated_on>
         <table>x_agsa_sapcockpit_alarm</table>
-        <title>ALARM Evolution on Today per hours</title>
+        <title>Alarms Count per hours</title>
         <title_horizontal_alignment>center</title_horizontal_alignment>
         <title_vertical_alignment>top</title_vertical_alignment>
         <to/>
