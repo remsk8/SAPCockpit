@@ -62,7 +62,7 @@
         <sys_created_on>2017-10-30 13:12:04</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>65226672dbc607007bd0f13daf96199c</sys_id>
-        <sys_mod_count>9</sys_mod_count>
+        <sys_mod_count>11</sys_mod_count>
         <sys_name>AngStatusWidgetNW</sys_name>
         <sys_package display_value="SAPCockpit" source="x_agsa_sapcockpit">e8dd70d1dbcacb407bd0f13daf96199c</sys_package>
         <sys_policy/>
@@ -70,7 +70,7 @@
         <sys_scope display_value="SAPCockpit">e8dd70d1dbcacb407bd0f13daf96199c</sys_scope>
         <sys_update_name>sp_widget_65226672dbc607007bd0f13daf96199c</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-11-09 14:41:34</sys_updated_on>
+        <sys_updated_on>2018-01-18 11:27:23</sys_updated_on>
         <template><![CDATA[<br>
 <link href="f989cff14f4a430033e71aabb110c71b.cssdbx?" rel="stylesheet" type="text/css" />
 <table class='sstatus' sytle='width:30%;'>
@@ -91,7 +91,7 @@
 
 <br>
 <table class='sstatus' sytle='width:30%;'>
-			<th class="sstatus"><a ng-href="sapcockpit?id=jobreport&system={{data.system}}" target="_self">Open JOB Dynamic Report</a></th>
+			<th class="sstatus"><a ng-href="sapcockpit?id=jobreport&system={{data.system}}" target="_self">JOB Dynamic Report</a></th>
 </table>]]></template>
     </sp_widget>
 </record_update>
