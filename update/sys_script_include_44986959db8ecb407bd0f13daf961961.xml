@@ -94,14 +94,14 @@ ProMonitorLib.prototype = {
 		getStatus.query();
 		if (getStatus.next()) {
 			if (getStatus.getAggregate('COUNT') !='0') {
-				obj.value='false';
+				obj.status='false';
 			} else {
-				obj.value='true';
+				obj.status='true';
 			}
 		}
 		obj.unit=unit;
 		obj.target=target;
-		obj.url='/x_agsa_sapcockpit_last_metric_list.do?sysparm_query=sid='+sid+'^name='+metric;
+		obj.url='/nav_to.do?uri=x_agsa_sapcockpit_last_metric_list.do?sysparm_query=sid='+sid+'^name='+metric;
 		return obj;
 	},
 	
@@ -163,7 +163,7 @@ ProMonitorLib.prototype = {
         <sys_created_on>2017-10-25 17:09:34</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>44986959db8ecb407bd0f13daf961961</sys_id>
-        <sys_mod_count>10</sys_mod_count>
+        <sys_mod_count>12</sys_mod_count>
         <sys_name>ProMonitorLib</sys_name>
         <sys_package display_value="SAPCockpit" source="x_agsa_sapcockpit">e8dd70d1dbcacb407bd0f13daf96199c</sys_package>
         <sys_policy>read</sys_policy>
@@ -171,6 +171,6 @@ ProMonitorLib.prototype = {
         <sys_scope display_value="SAPCockpit">e8dd70d1dbcacb407bd0f13daf96199c</sys_scope>
         <sys_update_name>sys_script_include_44986959db8ecb407bd0f13daf961961</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2018-01-17 15:56:49</sys_updated_on>
+        <sys_updated_on>2018-06-06 14:14:52</sys_updated_on>
     </sys_script_include>
 </record_update>

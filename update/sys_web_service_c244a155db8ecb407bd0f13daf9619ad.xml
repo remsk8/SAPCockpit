@@ -122,7 +122,7 @@
 		gr.samplemax = obj.samplemax;
 		gr.hasmax = obj.hasmax;
 		gr.isasync = obj.isasync;
-		gr.type = obj.type;
+		gr.type = obj.systemType;
 		gr.unit = obj.unit;
 		gr.unitshort = obj.unitshort;
 		gr.insert();
@@ -170,7 +170,7 @@
 			gr.samplemax = obj.samplemax;
 			gr.hasmax = obj.hasmax;
 			gr.isasync = obj.isasync;
-			gr.type = obj.type;
+			gr.type = obj.systemType;
 			gr.unit = obj.unit;
 			gr.unitshort = obj.unitshort;
 			gr.sys_domain = obj.domain;
@@ -204,7 +204,7 @@
 				gre.samplemax = obj.samplemax;
 				gre.hasmax = obj.hasmax;
 				gre.isasync = obj.isasync;
-				gre.type = obj.type;
+				gre.type = obj.systemType;
 				gre.unit = obj.unit;
 				gre.sys_domain = obj.domain;
 				gre.unitshort = obj.unitshort;
@@ -220,7 +220,7 @@
         <sys_created_on>2017-10-25 16:50:20</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>c244a155db8ecb407bd0f13daf9619ad</sys_id>
-        <sys_mod_count>39</sys_mod_count>
+        <sys_mod_count>49</sys_mod_count>
         <sys_name>MetricInsert</sys_name>
         <sys_package display_value="SAPCockpit" source="x_agsa_sapcockpit">e8dd70d1dbcacb407bd0f13daf96199c</sys_package>
         <sys_policy/>
@@ -228,7 +228,7 @@
         <sys_scope display_value="SAPCockpit">e8dd70d1dbcacb407bd0f13daf96199c</sys_scope>
         <sys_update_name>sys_web_service_c244a155db8ecb407bd0f13daf9619ad</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2018-01-26 10:21:24</sys_updated_on>
+        <sys_updated_on>2018-06-06 13:19:53</sys_updated_on>
         <wsdl>https://agentilpartnerdev2.service-now.com/x_agsa_sapcockpit_MetricInsert.do?WSDL</wsdl>
         <wsdl_compliance>false</wsdl_compliance>
     </sys_web_service>
