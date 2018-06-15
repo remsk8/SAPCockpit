@@ -12,7 +12,7 @@
         <description/>
         <docs/>
         <field_list/>
-        <has_preview>false</has_preview>
+        <has_preview>true</has_preview>
         <id>angstatuswidgeth</id>
         <internal>false</internal>
         <link/>
@@ -32,20 +32,15 @@
 	system=$sp.getParameter('system');
 	// First Get Alarm info
 
-	for (var i=0;i<2;i++) {
-		 alamCL.push(parseInt(promon.getCount(i,system)));
+	var value=100-(parseInt(promon.getCount(1,system))*100/parseInt(promon.getCount(0,system))).toFixed(0);
+	value=value.toString();
+	obj.unit='Todays Alarm (yesterday)';
+  if (value.charAt(0) != "-") {
+		obj.target=promon.getCount(0,system)+' (+' +value+'%)';
+	} else {
+		obj.target=promon.getCount(0,system)+' (' +value+'%)';
 	}
-	alamRS=alamCL[0].toString();
-	obj.unit='Alarm Count Today';
-	var avg=promon.average(alamCL);
-	var v=promon.standardDeviation(alamCL).toFixed(0);
-	var cv=(v/avg*100).toFixed(1);
-	alamRS=alamRS+' (RSD '+cv+' % on 2d)';
-	alamCL.push(cv);
-	alamCL.push(avg);
-	alamCL.push(v);
-	obj.target=alamRS;
-	obj.value='true';
+	obj.status="";
 	data.list.push(obj);
 	obj={};		
 	
@@ -59,7 +54,7 @@
         <sys_created_on>2017-10-30 12:41:20</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>471b9e7edb8607007bd0f13daf96193a</sys_id>
-        <sys_mod_count>3</sys_mod_count>
+        <sys_mod_count>8</sys_mod_count>
         <sys_name>AngStatusWidgetH</sys_name>
         <sys_package display_value="SAPCockpit" source="x_agsa_sapcockpit">e8dd70d1dbcacb407bd0f13daf96199c</sys_package>
         <sys_policy/>
@@ -67,7 +62,7 @@
         <sys_scope display_value="SAPCockpit">e8dd70d1dbcacb407bd0f13daf96199c</sys_scope>
         <sys_update_name>sp_widget_471b9e7edb8607007bd0f13daf96193a</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-11-09 15:23:48</sys_updated_on>
+        <sys_updated_on>2018-06-06 15:51:10</sys_updated_on>
         <template><![CDATA[<br>
 <br>
 <link href="f989cff14f4a430033e71aabb110c71b.cssdbx?" rel="stylesheet" type="text/css" />
@@ -82,8 +77,9 @@
 	<tr ng-repeat="item in data.list | orderBy:sortType:sortReverse | filter:searchAlarm">
 		<td class="sstatus"><a href="{{item.url}}" target="_blank">{{item.unit}}</a> </td>
  		<td class="sstatus">{{item.target}}</td>
-		<td class="sstatus" ng-if='item.value == "true"' style='background-color:#3bc999;'>CHECK OK</td>
-		<td class="sstatus" ng-if='item.value == "false"' style='background-color:#c71f3b;'>CHECK FAILED</td>
+		<td class="sstatus" ng-if='item.status == "true"' style='background-color:#3bc999;text-align:center;'>OK</td>
+		<td class="sstatus" ng-if='item.status == "false"' style='background-color:#c71f3b;text-align:center;'>FAILED</td>
+ 		<td class="sstatus" ng-if='item.status == ""' style='background-color:#3bc999;text-align:center;'></td>
   </tr>
 </table>
 ]]></template>

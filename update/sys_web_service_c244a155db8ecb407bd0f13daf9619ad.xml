@@ -55,8 +55,6 @@
 	while(ge.next()) {
 		twlist.push(ge.name.toString());	
 	}
-//	gs.info(wlist);
-//	gs.info(twlist);
 	
 	// foreach metric, extract the list of properties
 	for (var j=0;j<len;j++) {
@@ -66,14 +64,14 @@
 			value=obj.set.metric;
 		}
 		// First check if metric is in the whitelist
-		//gs.info('DEBUG name '+obj.set.metric[j].metricId.toString());
-		if (arrayUtil.contains(wlist,value.metricId.toString())) {
+		//gs.info('DEBUG name '+obj.set.metric[j].name.toString());
+		if (arrayUtil.contains(wlist,value.name.toString())) {
 			// Then insert/update data in "last metric table"
 			InsertProcess(value);
 		 }
 		 //
 		// IS it a JOB  or a TRANSACTION ? 
-		if ((value.metricId.toString().indexOf("JOBS_") != -1) || (value.metricId.toString().indexOf("TRANSACTIONS_TIME") != -1)) {
+		if ((value.name.toString().indexOf("JOBS_") != -1) || (value.name.toString().indexOf("TRANSACTIONS_TIME") != -1)) {
 			// Check in twlist TARGET
 			if (arrayUtil.contains(twlist,value.target.toString())) {
 				//gs.info('I Found a JOB or a transaction item in WTlist '+value.target.toString()+value.name.toString()+value.sid.toString());
@@ -93,7 +91,10 @@
 			LastMetric('insert',obj);
 		}
 		//gs.info('DEBUG Insert in METRICS '+obj.name+" "+obj.sid);
-		InsertMetric(obj);	 
+		// if the Metric History is enable, insert metric in table
+		if ( gs.getProperty('x_agsa_sapcockpit.Store Metric History') == 'true') {
+				InsertMetric(obj);	 
+		}
 	}
 		
 	
@@ -220,7 +221,7 @@
         <sys_created_on>2017-10-25 16:50:20</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>c244a155db8ecb407bd0f13daf9619ad</sys_id>
-        <sys_mod_count>49</sys_mod_count>
+        <sys_mod_count>53</sys_mod_count>
         <sys_name>MetricInsert</sys_name>
         <sys_package display_value="SAPCockpit" source="x_agsa_sapcockpit">e8dd70d1dbcacb407bd0f13daf96199c</sys_package>
         <sys_policy/>
@@ -228,7 +229,7 @@
         <sys_scope display_value="SAPCockpit">e8dd70d1dbcacb407bd0f13daf96199c</sys_scope>
         <sys_update_name>sys_web_service_c244a155db8ecb407bd0f13daf9619ad</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2018-06-06 13:19:53</sys_updated_on>
+        <sys_updated_on>2018-06-15 09:34:54</sys_updated_on>
         <wsdl>https://agentilpartnerdev2.service-now.com/x_agsa_sapcockpit_MetricInsert.do?WSDL</wsdl>
         <wsdl_compliance>false</wsdl_compliance>
     </sys_web_service>

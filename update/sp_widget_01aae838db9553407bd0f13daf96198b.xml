@@ -25,9 +25,10 @@
         <script><![CDATA[(function() {
 	data.list=[];
 	data.list2=[];
-	data.hanadb=gs.getProperty("x_agsa_sapcockpit.HANA.DB").split(',');
+	//data.hanadb=gs.getProperty("x_agsa_sapcockpit.HANA.DB").split(',');
 	refresh_threshold=options.alerttime;
 	system=$sp.getParameter('system');
+	//system='HA5';
 	data.system=system;
 	// Get node list, build first Table
 	node=getNode('HANA_NODE_AVAILABILITY');
@@ -40,31 +41,27 @@
 		obj.status=checkAvailability(node[i],'HANA_NODE_AVAILABILITY').status;
 		obj.statusValue=checkAvailability(node[i],'HANA_NODE_AVAILABILITY').statusValue;
 		// Get infos
-		obj.cpu= getAgg(node[i],'DB_CPU_UTILIZATION');
-		obj.mem= getAgg(node[i],'MEMORY_PERCENTAGEUSED');
-		obj.bck= getAgg(node[i],'DISK_DATA_BACKUP_PERCENTAGE_USED');
-		obj.data= getAgg(node[i],'DISK_DATA_PERCENTAGE_USED');
-		obj.log= getAgg(node[i],'DISK_LOG_PERCENTAGE_USED');
-
+		obj.cpu= parseInt(getAgg(node[i],'DB_CPU_UTILIZATION'));
+		obj.mem= parseInt(getAgg(node[i],'DB_MEMORY_PERCENTAGEUSED_TOTAL_RESIDENT_MEMORY'));
+		obj.bck= parseInt(getAgg(node[i],'DISK_DATA_BACKUP_PERCENTAGE_USED'));
+		obj.data= parseInt(getAgg(node[i],'DISK_DATA_PERCENTAGE_USED'));
+		obj.log= parseInt(getAgg(node[i],'DISK_LOG_PERCENTAGE_USED'));
 		obj.sid=system;
 		data.list.push(obj);
 	}
 		
 	// Get service-node list, build second table
-	node=getNode('DB_CPU_UTILIZATION_PER_SERVICE');
+	node=getNode('SERVICE_STATUS');
 	for (i=0;i<node.length;i++) {
 		obj={};
 		// Check availability
-		obj.name=node[i];
-		obj.status=checkAvailability(node[i],'SERVICE_STATUS').status;
+		obj.shost=node[i].split(' - ')[0];
+		obj.sservice=node[i].split(' - ')[1];
+		obj.sstatus=checkAvailability(node[i],'SERVICE_STATUS').status;
 		obj.statusValue=checkAvailability(node[i],'SERVICE_STATUS').statusValue;
 		// Get CPU infos
-		obj.cpu= getAgg(node[i],'DB_CPU_UTILIZATION_PER_SERVICE');
-		obj.mem= getAgg(node[i],'MEMORY_PERCENTAGEUSED_PER_SERVICE');
-		obj.data= getAgg(node[i],'DISK_DATA_PERCENTAGE_USED');
-		obj.logbck= getLastBck(node[i],'BACKUP_TIME_SINCE_LAST_SUCCESSFUL_LOG_BACKUP');
-		obj.dtabck= getLastBck(node[i],'BACKUP_TIME_SINCE_LAST_SUCCESSFUL_DATA_BACKUP');
-		//obj.sid=system;
+		obj.scpu= getAgg(node[i],'DB_CPU_UTILIZATION_PER_SERVICE');
+		obj.smem= parseInt(getAgg(node[i],'MEMORY_PERCENTAGEUSED_PER_SERVICE'));
 		data.list2.push(obj);
 	}
 	
@@ -146,7 +143,7 @@
         <sys_created_on>2018-04-03 12:45:13</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>01aae838db9553407bd0f13daf96198b</sys_id>
-        <sys_mod_count>82</sys_mod_count>
+        <sys_mod_count>198</sys_mod_count>
         <sys_name>Hana View</sys_name>
         <sys_package display_value="SAPCockpit" source="x_agsa_sapcockpit">e8dd70d1dbcacb407bd0f13daf96199c</sys_package>
         <sys_policy/>
@@ -154,59 +151,52 @@
         <sys_scope display_value="SAPCockpit">e8dd70d1dbcacb407bd0f13daf96199c</sys_scope>
         <sys_update_name>sp_widget_01aae838db9553407bd0f13daf96198b</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2018-06-06 10:03:00</sys_updated_on>
+        <sys_updated_on>2018-06-15 08:43:11</sys_updated_on>
         <template><![CDATA[<link href="f989cff14f4a430033e71aabb110c71b.cssdbx?" rel="stylesheet" type="text/css" />
-<h1>
-  {{data.system}}
-</h1>
+<h1> {{data.system}} </h1>
 <table class='sstatus' sytle='width:30%;'>
 	<thead>
-		<tr  ng-init="sortType='data.company';sortReverse=true">
-      <th class="sstatus" ng-click="sortType = 'sid'; sortReverse = !sortReverse"><a href="javascript:void(0)">Node Name</a></th>
-			<th class="sstatus" ng-click="sortType = 'sid'; sortReverse = !sortReverse"><a href="javascript:void(0)">Status</a></th>
- 			<th class="sstatus" ng-click="sortType = 'type'; sortReverse = !sortReverse"><a href="javascript:void(0)">AVG CPU</a></th>
- 			<th class="sstatus" ng-click="sortType = 'type'; sortReverse = !sortReverse"><a href="javascript:void(0)">AVG Mem</a></th>      
- 			<th class="sstatus" ng-click="sortType = 'type'; sortReverse = !sortReverse"><a href="javascript:void(0)">Dsk Bck</a></th>      
- 			<th class="sstatus" ng-click="sortType = 'type'; sortReverse = !sortReverse"><a href="javascript:void(0)">Dsk Data</a></th>      
- 			<th class="sstatus" ng-click="sortType = 'type'; sortReverse = !sortReverse"><a href="javascript:void(0)">Dsk Log</a></th>      
+		<tr  ng-init="sortType='name';sortReverse=false">
+      <th class="sstatus" ng-click="sortType = 'name'; sortReverse = !sortReverse"><a href="javascript:void(0)">Node Name</a></th>
+			<th class="sstatus" ng-click="sortType = 'status'; sortReverse = !sortReverse"><a href="javascript:void(0)">Status</a></th>
+ 			<th class="sstatus" ng-click="sortType = 'cpu'; sortReverse = !sortReverse"><a href="javascript:void(0)">CPU</a></th>
+ 			<th class="sstatus" ng-click="sortType = 'mem'; sortReverse = !sortReverse"><a href="javascript:void(0)">RMem Total Used</a></th>      
+ 			<th class="sstatus" ng-click="sortType = 'bck'; sortReverse = !sortReverse"><a href="javascript:void(0)">Dsk Bck</a></th>      
+ 			<th class="sstatus" ng-click="sortType = 'data'; sortReverse = !sortReverse"><a href="javascript:void(0)">Dsk Data</a></th>      
+ 			<th class="sstatus" ng-click="sortType = 'log'; sortReverse = !sortReverse"><a href="javascript:void(0)">Dsk Log</a></th>      
 		</tr>
 	</thead>  
       <tr ng-repeat="item in data.list | orderBy:sortType:sortReverse">
-          <td class="sstatus" style='color:lightblue;' >{{item.name}}</td>
+          <td class="sstatus" ng-click="$parent.myFilter = {shost:item.name};" style='color:lightblue;' >{{item.name}}</td>
           <td class="sstatus" ng-if='item.status == "true"' style='background-color:#3bc999;'><a style="color:white" href="sapcockpit?id={{item.typelink}}&system={{item.sid}}&company={{item.company}}">{{item.statusValue}}</a></td>
           <td class="sstatus" ng-if='item.status == "false"' style='background-color:#c71f3b;'><a style='color:white;' href="sapcockpit?id={{item.typelink}}&system={{item.sid}}&company={{item.company}}">{{item.statusValue}}</a></td>
           <td class="sstatus" ng-if='item.status != "false" && item.status != "true"' style='background-color:grey;'><a style='color:white;' href="sapcockpit?id={{item.typelink}}system={{item.sid}}&company={{item.company}}">{{item.statusValue}}</a></td>
           <td class="sstatus">{{item.cpu}}</td>
-          <td class="sstatus">{{item.mem}}</td>
+          <td class="sstatus">{{item.mem}} %</td>
           <td class="sstatus">{{item.bck}} %</td>
-        	<td class="sstatus">{{item.data}} %</td>
+          <td class="sstatus">{{item.data}} %</td>
           <td class="sstatus">{{item.log}} %</td>
        </tr>
 </table>
 <br>
 <table class='sstatus' sytle='width:30%;'>
 	<thead>
-		<tr  ng-init="sortType='data.company';sortReverse=true">
-      <th class="sstatus" ng-click="sortType = 'sid'; sortReverse = !sortReverse"><a href="javascript:void(0)">Service</a></th>
-			<th class="sstatus" ng-click="sortType = 'sid'; sortReverse = !sortReverse"><a href="javascript:void(0)">Status</a></th>
- 			<th class="sstatus" ng-click="sortType = 'type'; sortReverse = !sortReverse"><a href="javascript:void(0)">AVG CPU</a></th>
- 			<th class="sstatus" ng-click="sortType = 'type'; sortReverse = !sortReverse"><a href="javascript:void(0)">AVG Mem</a></th>      
- 			<th class="sstatus" ng-click="sortType = 'type'; sortReverse = !sortReverse"><a href="javascript:void(0)">Dsk Data</a></th>      
-			<th class="sstatus" ng-click="sortType = 'type'; sortReverse = !sortReverse"><a href="javascript:void(0)">Log Bck</a></th>      
- 			<th class="sstatus" ng-click="sortType = 'type'; sortReverse = !sortReverse"><a href="javascript:void(0)">Dta Bck</a></th>      
-    </tr>
+		<tr ng-init="sortType='shost';sortReverse2=true;myFilter=data.list[0].name">
+      <th class="sstatus" ng-click="sortType = 'shost'; sortReverse2 = !sortReverse2"><a href="javascript:void(0)">Host</a></th>
+      <th class="sstatus" ng-click="sortType = 'sservice'; sortReverse2 = !sortReverse2"><a href="javascript:void(0)">Service</a></th>
+			<th class="sstatus" ng-click="sortType = 'sstatus'; sortReverse2 = !sortReverse2"><a href="javascript:void(0)">Status</a></th>
+ 			<th class="sstatus" ng-click="sortType = 'scpu'; sortReverse2 = !sortReverse2"><a href="javascript:void(0)">CPU</a></th>
+ 			<th class="sstatus" ng-click="sortType = 'smem'; sortReverse2 = !sortReverse2"><a href="javascript:void(0)">Memory</a></th>      
+		</tr>
 	</thead>  
-      <tr ng-repeat="item in data.list2 | orderBy:sortType:sortReverse">
-          <td class="sstatus" style='color:lightblue;' >{{item.name}}</td>
-          <td class="sstatus" ng-if='item.status == "true"' style='background-color:#3bc999;'><a style="color:white" href="sapcockpit?id={{item.typelink}}&system={{item.sid}}&company={{item.company}}">{{item.statusValue}}</a></td>
-          <td class="sstatus" ng-if='item.status == "false"' style='background-color:#c71f3b;'><a style='color:white;' href="sapcockpit?id={{item.typelink}}&system={{item.sid}}&company={{item.company}}">{{item.statusValue}}</a></td>
-          <td class="sstatus" ng-if='item.status != "false" && item.status != "true"' style='background-color:grey;'><a style='color:white;' href="sapcockpit?id={{item.typelink}}system={{item.sid}}&company={{item.company}}">{{item.statusValue}}</a></td>
-          <td class="sstatus">{{item.cpu}}</td>
-          <td class="sstatus">{{item.mem}}</td>
-        	<td class="sstatus">{{item.data}} %</td>
-         	<td class="sstatus">{{item.logbck}}</td>
-        	<td class="sstatus">{{item.dtabck}}</td>
-
+      <tr ng-repeat="item in data.list2 | orderBy:sortType:sortReverse2 | filter:myFilter">
+          <td class="sstatus" style='color:lightblue;' >{{item.shost}}</td>
+          <td class="sstatus" style='color:lightblue;' >{{item.sservice}}</td>
+          <td class="sstatus" ng-if='item.sstatus == "true"' style='background-color:#3bc999;'><a style="color:white" href="sapcockpit?id={{item.typelink}}&system={{item.sid}}&company={{item.company}}">{{item.statusValue}}</a></td>
+          <td class="sstatus" ng-if='item.sstatus == "false"' style='background-color:#c71f3b;'><a style='color:white;' href="sapcockpit?id={{item.typelink}}&system={{item.sid}}&company={{item.company}}">{{item.statusValue}}</a></td>
+          <td class="sstatus" ng-if='item.sstatus != "false" && item.sstatus != "true"' style='background-color:grey;'><a style='color:white;' href="sapcockpit?id={{item.typelink}}system={{item.sid}}&company={{item.company}}">{{item.statusValue}}</a></td>
+          <td class="sstatus">{{item.scpu}}</td>
+          <td class="sstatus">{{item.smem}} %</td>
        </tr>
 </table>
 <br>
