@@ -9,7 +9,6 @@
 				url: "x_agsa_sapcockpit_ProMonitorProcessor.do?sys_id="+sys_id,
 				contentType: "application/json; charset=utf-8",
 				success: function (response) {
-					//console.log('success '+JSON.stringify(response));
 					spUtil.update($scope);
 				},
 				error: function (status) {
@@ -34,8 +33,6 @@
         <public>false</public>
         <roles/>
         <script><![CDATA[(function() {
-  /* populate the 'data' object */
-  /* e.g., data.table = $sp.getValue('table'); */
 	data.alarmList =[];
 	var system=$sp.getParameter("system");
 	var getAlm=new GlideRecord('x_agsa_sapcockpit_alarm');
@@ -59,7 +56,7 @@
         <sys_created_on>2017-10-30 12:56:57</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>f19e1e32dbc607007bd0f13daf961943</sys_id>
-        <sys_mod_count>66</sys_mod_count>
+        <sys_mod_count>67</sys_mod_count>
         <sys_name>AngAlarmConsole</sys_name>
         <sys_package display_value="SAPCockpit" source="x_agsa_sapcockpit">e8dd70d1dbcacb407bd0f13daf96199c</sys_package>
         <sys_policy/>
@@ -67,7 +64,7 @@
         <sys_scope display_value="SAPCockpit">e8dd70d1dbcacb407bd0f13daf96199c</sys_scope>
         <sys_update_name>sp_widget_f19e1e32dbc607007bd0f13daf961943</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2018-06-14 14:39:42</sys_updated_on>
+        <sys_updated_on>2018-06-19 09:14:58</sys_updated_on>
         <template><![CDATA[<link href="f989cff14f4a430033e71aabb110c71b.cssdbx?" rel="stylesheet" type="text/css" />
 <!--<a href="" ng-click="showme=true">Hide Filter</a>
 <span class="wrapper">
@@ -78,22 +75,24 @@
 		<tr ng-init="sortType='severity';sortReverse = true">
 			<th class="sstatus"><a href="javascript:void(0)" ng-click="sortType = 'severity'; sortReverse = !sortReverse">Severity</a></th>
 			<th class="sstatus"><a href="javascript:void(0)">Action</a></th>
-      <th class="sstatus"><a href="javascript:void(0)" ng-click="sortType = 'raisetime'; sortReverse = !sortReverse">Message</a></th>
-      <th class="sstatus"><a href="javascript:void(0)" ng-click="sortType = 'raisetime'; sortReverse = !sortReverse">Raised at</a></th>
-			<th class="sstatus"><a href="javascript:void(0)" ng-click="sortType = 'updatetime'; sortReverse = !sortReverse">Updated at</a></th>
+    	  	<th class="sstatus"><a href="javascript:void(0)" ng-click="sortType = 'message'; sortReverse = !sortReverse">Message</a></th>        	  	
+            <th class="sstatus"><a href="javascript:void(0)" ng-click="sortType = 'count'; sortReverse = !sortReverse">Count</a></th>
+      		<th class="sstatus"><a href="javascript:void(0)" ng-click="sortType = 'raisetime'; sortReverse = !sortReverse">Raised at</a></th>
+          	<th class="sstatus"><a href="javascript:void(0)" ng-click="sortType = 'updatetime'; sortReverse = !sortReverse">Updated at</a></th>
 		</tr>
 	</thead>
-	<tr ng-repeat="item in data.alarmList | orderBy:sortType:sortReverse | filter:searchAlarm">
-    <td class="sstatus" ng-if='item.severity == 5' style='background-color:#c71f3b;'><a href="nav_to.do?uri=/x_agsa_sapcockpit_alarm.do?sys_id={{item.sysid}}" target="_blank" style="color:white;">CRITICAL</a></td>
-    <td class="sstatus" ng-if='item.severity == 4' style='background-color:#ff8700;'><a href="nav_to.do?uri=/x_agsa_sapcockpit_alarm.do?sys_id={{item.sysid}}" target="_blank" style="color:white;">MAJOR</a></td>
-    <td class="sstatus" ng-if='item.severity == 3' style='background-color:#6b2cec;'><a href="nav_to.do?uri=/x_agsa_sapcockpit_alarm.do?sys_id={{item.sysid}}" target="_blank" style="color:white;">MINOR</a></td>
-    <td class="sstatus" ng-if='item.severity == 2' style='background-color:#ecd82c;'><a href="nav_to.do?uri=/x_agsa_sapcockpit_alarm.do?sys_id={{item.sysid}}" target="_blank" style="color:white;">WARNING</a></td>
-    <td class="sstatus" ng-if='item.severity == 1' style='background-color:#3bb3c9;'><a href="nav_to.do?uri=/x_agsa_sapcockpit_alarm.do?sys_id={{item.sysid}}" target="_blank" style="color:white;">INFO</a></td>
-    <td class="sstatus" ng-click="c.acknowledge(item.sysid)"> <a style="color:white;font-size:smaller;">Acknowledge</a> </td>
-    <td class="sstatus"><a href="nav_to.do?uri=/x_agsa_sapcockpit_alarm.do?sys_id={{item.sysid}}" target="_blank" style="color:white;font-size:smaller;">{{item.message}}</a> </td>
-    <td class="sstatus"><a href="nav_to.do?uri=/x_agsa_sapcockpit_alarm.do?sys_id={{item.sysid}}" target="_blank" style="color:white;font-size: smaller;">{{item.raisetime}}</a> </td>
-    <td class="sstatus"><a href="nav_to.do?uri=/x_agsa_sapcockpit_alarm.do?sys_id={{item.sysid}}" target="_blank" style="color:white;font-size: smaller;">{{item.updatetime}}</a></td>
-	  </tr>
+        <tr ng-repeat="item in data.alarmList | orderBy:sortType:sortReverse | filter:searchAlarm">
+            <td class="sstatus" ng-if='item.severity == 5' style='background-color:#c71f3b;'><a href="nav_to.do?uri=/x_agsa_sapcockpit_alarm.do?sys_id={{item.sysid}}" target="_blank" style="color:white;">CRITICAL</a></td>
+            <td class="sstatus" ng-if='item.severity == 4' style='background-color:#ff8700;'><a href="nav_to.do?uri=/x_agsa_sapcockpit_alarm.do?sys_id={{item.sysid}}" target="_blank" style="color:white;">MAJOR</a></td>
+            <td class="sstatus" ng-if='item.severity == 3' style='background-color:#6b2cec;'><a href="nav_to.do?uri=/x_agsa_sapcockpit_alarm.do?sys_id={{item.sysid}}" target="_blank" style="color:white;">MINOR</a></td>
+            <td class="sstatus" ng-if='item.severity == 2' style='background-color:#ecd82c;'><a href="nav_to.do?uri=/x_agsa_sapcockpit_alarm.do?sys_id={{item.sysid}}" target="_blank" style="color:white;">WARNING</a></td>
+            <td class="sstatus" ng-if='item.severity == 1' style='background-color:#3bb3c9;'><a href="nav_to.do?uri=/x_agsa_sapcockpit_alarm.do?sys_id={{item.sysid}}" target="_blank" style="color:white;">INFO</a></td>
+            <td class="sstatus" ng-click="c.acknowledge(item.sysid)"> <a style="color:white;font-size:smaller;">Acknowledge</a> </td>
+            <td class="sstatus"><a href="nav_to.do?uri=/x_agsa_sapcockpit_alarm.do?sys_id={{item.sysid}}" target="_blank" style="color:white;font-size:smaller;">{{item.message}}</a> </td>
+            <td class="sstatus"><a href="nav_to.do?uri=/x_agsa_sapcockpit_alarm.do?sys_id={{item.sysid}}" target="_blank" style="color:white;font-size:smaller;">{{item.count}}</a> </td>
+            <td class="sstatus"><a href="nav_to.do?uri=/x_agsa_sapcockpit_alarm.do?sys_id={{item.sysid}}" target="_blank" style="color:white;font-size: smaller;">{{item.raisetime}}</a></td>
+            <td class="sstatus"><a href="nav_to.do?uri=/x_agsa_sapcockpit_alarm.do?sys_id={{item.sysid}}" target="_blank" style="color:white;font-size: smaller;">{{item.updatetime}}</a></td>
+         </tr>
 </table>
 ]]></template>
     </sp_widget>

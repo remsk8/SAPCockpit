@@ -11,7 +11,7 @@
         </filter>
         <glyph/>
         <id/>
-        <maximum_entries>10</maximum_entries>
+        <maximum_entries>50</maximum_entries>
         <order>1</order>
         <order_by/>
         <order_direction>asc</order_direction>
@@ -26,7 +26,7 @@
         <sys_created_on>2018-05-07 22:40:13</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>dce87dbbdb399f007bd0f13daf961943</sys_id>
-        <sys_mod_count>5</sys_mod_count>
+        <sys_mod_count>6</sys_mod_count>
         <sys_name>All alarms</sys_name>
         <sys_package display_value="SAPCockpit" source="x_agsa_sapcockpit">e8dd70d1dbcacb407bd0f13daf96199c</sys_package>
         <sys_policy/>
@@ -34,7 +34,7 @@
         <sys_scope display_value="SAPCockpit">e8dd70d1dbcacb407bd0f13daf96199c</sys_scope>
         <sys_update_name>sp_instance_table_dce87dbbdb399f007bd0f13daf961943</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2018-05-07 23:17:44</sys_updated_on>
+        <sys_updated_on>2018-06-19 09:04:01</sys_updated_on>
         <table>x_agsa_sapcockpit_alarm</table>
         <title>All alarms</title>
         <url/>
