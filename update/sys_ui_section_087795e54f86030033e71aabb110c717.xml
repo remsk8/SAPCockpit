@@ -5,13 +5,13 @@
             <element>name</element>
             <position>0</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2017-10-26 10:32:20</sys_created_on>
-            <sys_id>847795e54f86030033e71aabb110c72a</sys_id>
+            <sys_created_on>2018-06-20 08:29:48</sys_created_on>
+            <sys_id>003cd9fd4ffe530033e71aabb110c736</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_agsa_sapcockpit_config" sys_domain="global" view="Default view">087795e54f86030033e71aabb110c717</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2017-10-26 10:32:20</sys_updated_on>
+            <sys_updated_on>2018-06-20 08:29:48</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
@@ -19,69 +19,69 @@
             <element>.begin_split</element>
             <position>1</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2017-10-26 10:32:20</sys_created_on>
-            <sys_id>8c7795e54f86030033e71aabb110c72a</sys_id>
+            <sys_created_on>2018-06-20 08:29:48</sys_created_on>
+            <sys_id>c43cd9fd4ffe530033e71aabb110c736</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_agsa_sapcockpit_config" sys_domain="global" view="Default view">087795e54f86030033e71aabb110c717</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2017-10-26 10:32:20</sys_updated_on>
+            <sys_updated_on>2018-06-20 08:29:48</sys_updated_on>
             <sys_user/>
             <type>.begin_split</type>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
-            <element>system</element>
+            <element>type</element>
             <position>2</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2017-10-26 10:32:20</sys_created_on>
-            <sys_id>007795e54f86030033e71aabb110c72b</sys_id>
+            <sys_created_on>2018-06-20 08:29:48</sys_created_on>
+            <sys_id>483cd9fd4ffe530033e71aabb110c736</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_agsa_sapcockpit_config" sys_domain="global" view="Default view">087795e54f86030033e71aabb110c717</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2017-10-26 10:32:20</sys_updated_on>
+            <sys_updated_on>2018-06-20 08:29:48</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>system</element>
+            <position>3</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2018-06-20 08:29:48</sys_created_on>
+            <sys_id>c83cd9fd4ffe530033e71aabb110c736</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_agsa_sapcockpit_config" sys_domain="global" view="Default view">087795e54f86030033e71aabb110c717</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2018-06-20 08:29:48</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>.split</element>
-            <position>3</position>
-            <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2017-10-26 10:32:20</sys_created_on>
-            <sys_id>807795e54f86030033e71aabb110c72b</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_ui_formatter/>
-            <sys_ui_section caption="NULL" display_value="" name="x_agsa_sapcockpit_config" sys_domain="global" view="Default view">087795e54f86030033e71aabb110c717</sys_ui_section>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2017-10-26 10:32:20</sys_updated_on>
-            <sys_user/>
-            <type>.split</type>
-        </sys_ui_element>
-        <sys_ui_element action="INSERT_OR_UPDATE">
-            <element>type</element>
             <position>4</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2017-10-26 10:32:20</sys_created_on>
-            <sys_id>047795e54f86030033e71aabb110c72b</sys_id>
+            <sys_created_on>2018-06-20 08:29:48</sys_created_on>
+            <sys_id>4c3cd9fd4ffe530033e71aabb110c736</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_agsa_sapcockpit_config" sys_domain="global" view="Default view">087795e54f86030033e71aabb110c717</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2017-10-26 10:32:20</sys_updated_on>
+            <sys_updated_on>2018-06-20 08:29:48</sys_updated_on>
             <sys_user/>
-            <type/>
+            <type>.split</type>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>.end_split</element>
             <position>5</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2017-10-26 10:32:20</sys_created_on>
-            <sys_id>847795e54f86030033e71aabb110c72b</sys_id>
+            <sys_created_on>2018-06-20 08:29:49</sys_created_on>
+            <sys_id>cc3cd9fd4ffe530033e71aabb110c736</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_agsa_sapcockpit_config" sys_domain="global" view="Default view">087795e54f86030033e71aabb110c717</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2017-10-26 10:32:20</sys_updated_on>
+            <sys_updated_on>2018-06-20 08:29:49</sys_updated_on>
             <sys_user/>
             <type>.end_split</type>
         </sys_ui_element>
