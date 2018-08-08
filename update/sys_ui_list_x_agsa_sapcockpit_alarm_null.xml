@@ -148,11 +148,11 @@
             <sum>false</sum>
             <sys_class_name>sys_ui_list</sys_class_name>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2018-06-04 15:48:47</sys_created_on>
+            <sys_created_on>2018-08-07 14:44:35</sys_created_on>
             <sys_customer_update>false</sys_customer_update>
             <sys_domain>global</sys_domain>
             <sys_domain_path>/</sys_domain_path>
-            <sys_id>ee3760f8db665f407bd0f13daf9619b6</sys_id>
+            <sys_id>f54e719d4f771b0033e71aabb110c7fd</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_name/>
             <sys_package/>
@@ -161,7 +161,7 @@
             <sys_scope display_value="SAPCockpit">e8dd70d1dbcacb407bd0f13daf96199c</sys_scope>
             <sys_update_name/>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2018-06-04 15:48:47</sys_updated_on>
+            <sys_updated_on>2018-08-07 14:44:35</sys_updated_on>
             <sys_user display_value="System Administrator">6816f79cc0a8016401c5a33be04be441</sys_user>
             <view display_value="Default view" name="NULL">Default view</view>
             <view_name/>
