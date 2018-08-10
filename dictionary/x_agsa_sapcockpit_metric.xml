@@ -2,7 +2,7 @@
 <database>
     <element label="Metric" max_length="40" name="x_agsa_sapcockpit_metric" type="collection">
         <element label="Client" max_length="100" name="client" type="string"/>
-        <element label="Company" max_length="32" name="company" reference="core_company" type="reference"/>
+        <element label="Company" max_length="40" name="company" type="string"/>
         <element label="ConfigID" max_length="100" name="configid" type="string"/>
         <element label="ConnectorID" max_length="100" name="connectorid" type="string"/>
         <element label="CustomSource" max_length="100" name="customsource" type="string"/>
@@ -28,8 +28,5 @@
         <element label="Unitshort" max_length="20" name="unitshort" type="string"/>
         <element label="User" max_length="50" name="user" type="string"/>
         <element label="Value" max_length="50" name="value" type="string"/>
-        <index name="index">
-            <element name="company"/>
-        </index>
     </element>
 </database>
