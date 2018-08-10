@@ -3,7 +3,7 @@
     <element audit="true" label="Alarm" max_length="40" name="x_agsa_sapcockpit_alarm" type="collection">
         <element label="Acknowledge" max_length="40" name="acknowledge" type="boolean"/>
         <element label="Client" max_length="10" name="client" type="string"/>
-        <element label="Company" max_length="32" name="company" reference="core_company" type="reference"/>
+        <element label="Company" max_length="40" name="company" type="string"/>
         <element label="ConfigId" max_length="40" name="configid" type="string"/>
         <element label="Connector" max_length="60" name="connector" type="string"/>
         <element label="Count" max_length="40" name="count" type="integer"/>
@@ -28,12 +28,9 @@
         <element label="Type" max_length="40" name="type" type="string"/>
         <element label="User" max_length="100" name="user" type="string"/>
         <index name="index">
-            <element name="company"/>
-        </index>
-        <index name="index2">
             <element name="id"/>
         </index>
-        <index name="index3">
+        <index name="index2">
             <element name="sid"/>
         </index>
     </element>
