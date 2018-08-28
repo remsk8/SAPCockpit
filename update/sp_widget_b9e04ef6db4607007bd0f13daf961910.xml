@@ -46,7 +46,7 @@
         <name>AngCharts Tblocked</name>
         <option_schema/>
         <public>false</public>
-        <roles/>
+        <roles>x_agsa_sapcockpit.user</roles>
         <script><![CDATA[(function() {
   /* populate the 'data' object */
   /* e.g., data.table = $sp.getValue('table'); */
@@ -69,7 +69,7 @@
         <sys_created_on>2017-10-30 10:46:22</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>b9e04ef6db4607007bd0f13daf961910</sys_id>
-        <sys_mod_count>4</sys_mod_count>
+        <sys_mod_count>5</sys_mod_count>
         <sys_name>AngCharts Tblocked</sys_name>
         <sys_package display_value="SAPCockpit" source="x_agsa_sapcockpit">e8dd70d1dbcacb407bd0f13daf96199c</sys_package>
         <sys_policy/>
@@ -77,7 +77,7 @@
         <sys_scope display_value="SAPCockpit">e8dd70d1dbcacb407bd0f13daf96199c</sys_scope>
         <sys_update_name>sp_widget_b9e04ef6db4607007bd0f13daf961910</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2018-06-06 15:45:32</sys_updated_on>
+        <sys_updated_on>2018-08-27 12:17:16</sys_updated_on>
         <template><![CDATA[<canvas id="myChart3" width="200" height="200"/>]]></template>
     </sp_widget>
 </record_update>

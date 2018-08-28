@@ -39,7 +39,7 @@ ProMonitorLib.prototype = {
 	},
 	
 	returnDuration: function(obj) {
-		var getDur=new GlideRecord('x_agsa_sapcockpit_last_metric');
+		var getDur=new GlideRecordSecure('x_agsa_sapcockpit_last_metric');
 		getDur.addQuery('connectorid',obj.connectorId);
 		getDur.addQuery('metric','JOBS_DURATION');
 		getDur.addQuery('target',obj.target);
@@ -51,7 +51,7 @@ ProMonitorLib.prototype = {
 	},
 	
 	returnStatus: function(obj) {
-		var getStat=new GlideRecord('x_agsa_sapcockpit_last_metric');
+		var getStat=new GlideRecordSecure('x_agsa_sapcockpit_last_metric');
 		getStat.addQuery('connectorid',obj.connectorId);
 		getStat.addQuery('metric','JOBS_STATUS');
 		getStat.addQuery('target',obj.target);
@@ -67,7 +67,7 @@ ProMonitorLib.prototype = {
 	},
 	
 	returnLastCheckValue: function(obj) {
-		var gr=new GlideRecord('x_agsa_sapcockpit_metric');
+		var gr=new GlideRecordSecure('x_agsa_sapcockpit_metric');
 		gr.addQuery('connectorid',obj.connectorId);
 		gr.addQuery('metric',obj.metricId);
 		gr.addQuery('target',obj.target);
@@ -145,7 +145,7 @@ ProMonitorLib.prototype = {
         <sys_created_on>2017-10-25 17:09:34</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>44986959db8ecb407bd0f13daf961961</sys_id>
-        <sys_mod_count>15</sys_mod_count>
+        <sys_mod_count>16</sys_mod_count>
         <sys_name>ProMonitorLib</sys_name>
         <sys_package display_value="SAPCockpit" source="x_agsa_sapcockpit">e8dd70d1dbcacb407bd0f13daf96199c</sys_package>
         <sys_policy/>
@@ -153,6 +153,6 @@ ProMonitorLib.prototype = {
         <sys_scope display_value="SAPCockpit">e8dd70d1dbcacb407bd0f13daf96199c</sys_scope>
         <sys_update_name>sys_script_include_44986959db8ecb407bd0f13daf961961</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2018-08-10 13:51:06</sys_updated_on>
+        <sys_updated_on>2018-08-28 13:49:07</sys_updated_on>
     </sys_script_include>
 </record_update>

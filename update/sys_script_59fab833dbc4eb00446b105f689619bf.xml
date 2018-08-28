@@ -4,7 +4,7 @@
         <abort_action>false</abort_action>
         <access>package_private</access>
         <action_delete>false</action_delete>
-        <action_insert>true</action_insert>
+        <action_insert>false</action_insert>
         <action_query>false</action_query>
         <action_update>true</action_update>
         <active>true</active>
@@ -12,17 +12,17 @@
         <advanced>true</advanced>
         <change_fields>false</change_fields>
         <client_callable>false</client_callable>
-        <collection>x_agsa_sapcockpit_alarm</collection>
+        <collection>sys_properties</collection>
         <condition/>
         <description/>
         <execute_function>false</execute_function>
-        <filter_condition table="x_agsa_sapcockpit_alarm">severity=CRITICAL^EQ<item endquery="false" field="severity" goto="false" newquery="false" operator="=" or="false" value="CRITICAL"/>
+        <filter_condition table="sys_properties">name=x_agsa_sapcockpit.automatic_incident_creation^EQ<item endquery="false" field="name" goto="false" newquery="false" operator="=" or="false" value="x_agsa_sapcockpit.automatic_incident_creation"/>
             <item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/>
         </filter_condition>
         <is_rest>false</is_rest>
         <message/>
-        <name>Automatic Incident Creation</name>
-        <order>10</order>
+        <name>Activate Automatic Incident Creation BR</name>
+        <order>100</order>
         <priority>100</priority>
         <rest_method/>
         <rest_method_text/>
@@ -31,32 +31,35 @@
         <rest_variables/>
         <role_conditions/>
         <script><![CDATA[(function executeRule(current, previous /*null when async*/) {
-	var gr=new GlideRecord('incident');
-	gr.initialize();
-	gr.short_description=current.message;
-	gr.caller_id=current.sys_created_by;
-	gr.description=current.description;
-	var value=gr.insert();
+	// activate or deactivate business rule for incident creation
+	var gr=new GlideRecord('sys_script');
+	gr.get('f29cb51d4f771b0033e71aabb110c761');
+	if (current.value == 'true') {
+		gr.active=true;
+	} else {
+		gr.active=false;
+	}
+	gr.update();	
 })(current, previous);]]></script>
         <sys_class_name>sys_script</sys_class_name>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2018-08-07 14:41:07</sys_created_on>
+        <sys_created_on>2018-08-27 14:32:29</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
-        <sys_id>f29cb51d4f771b0033e71aabb110c761</sys_id>
-        <sys_mod_count>9</sys_mod_count>
-        <sys_name>Automatic Incident Creation</sys_name>
+        <sys_id>59fab833dbc4eb00446b105f689619bf</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>Activate Automatic Incident Creation BR</sys_name>
         <sys_overrides/>
         <sys_package display_value="SAPCockpit" source="x_agsa_sapcockpit">e8dd70d1dbcacb407bd0f13daf96199c</sys_package>
         <sys_policy/>
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="SAPCockpit">e8dd70d1dbcacb407bd0f13daf96199c</sys_scope>
-        <sys_update_name>sys_script_f29cb51d4f771b0033e71aabb110c761</sys_update_name>
+        <sys_update_name>sys_script_59fab833dbc4eb00446b105f689619bf</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2018-08-27 14:43:26</sys_updated_on>
+        <sys_updated_on>2018-08-27 14:42:41</sys_updated_on>
         <template/>
         <when>before</when>
     </sys_script>
-    <sys_translated_text action="delete_multiple" query="documentkey=f29cb51d4f771b0033e71aabb110c761"/>
+    <sys_translated_text action="delete_multiple" query="documentkey=59fab833dbc4eb00446b105f689619bf"/>
 </record_update>

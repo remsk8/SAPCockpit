@@ -43,7 +43,7 @@ ProMonitorReportLib.prototype = {
 			this.log.logDebug('->Target for each '+targetlist[j]);
 			for (var c=0;c<syst.length;c++) {
 				this.log.logDebug('--->Syst for each '+syst[c]);
-				var count=new GlideRecord('x_agsa_sapcockpit_metric');
+				var count=new GlideRecordSecure('x_agsa_sapcockpit_metric');
 				if (type == 'transaction') 
 					count.addQuery('metric','TRANSACTION_TIMES');
 				else
@@ -79,9 +79,9 @@ ProMonitorReportLib.prototype = {
 	_insertInJobTable: function(obj,type) {
 		var gr;
 		if (obj.TimePeriod === 'Daily')
-			gr=new GlideRecord('x_agsa_sapcockpit_dynamic_report_daily');
+			gr=new GlideRecordSecure('x_agsa_sapcockpit_dynamic_report_daily');
 		else if (obj.TimePeriod === 'Weekly')
-			gr=new GlideRecord('x_agsa_sapcockpit_dynamic_report_weekly');
+			gr=new GlideRecordSecure('x_agsa_sapcockpit_dynamic_report_weekly');
 		gr.initialize();
 		gr.system=obj.system;
 		gr.name=obj.job;
@@ -101,7 +101,7 @@ ProMonitorReportLib.prototype = {
 	},
 	
 	_cleanUp: function(date,type) {
-		var cleaner=new GlideRecord('x_agsa_sapcockpit_dynamic_report_daily');
+		var cleaner=new GlideRecordSecure('x_agsa_sapcockpit_dynamic_report_daily');
 		cleaner.addQuery('generation_date','=',date);
 		cleaner.deleteMultiple();
 	},
@@ -219,7 +219,7 @@ ProMonitorReportLib.prototype = {
         <sys_created_on>2017-10-25 17:10:25</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>b2d8e9d5db8ecb407bd0f13daf9619c2</sys_id>
-        <sys_mod_count>56</sys_mod_count>
+        <sys_mod_count>57</sys_mod_count>
         <sys_name>ProMonitorReportLib</sys_name>
         <sys_package display_value="SAPCockpit" source="x_agsa_sapcockpit">e8dd70d1dbcacb407bd0f13daf96199c</sys_package>
         <sys_policy/>
@@ -227,6 +227,6 @@ ProMonitorReportLib.prototype = {
         <sys_scope display_value="SAPCockpit">e8dd70d1dbcacb407bd0f13daf96199c</sys_scope>
         <sys_update_name>sys_script_include_b2d8e9d5db8ecb407bd0f13daf9619c2</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2018-06-20 08:00:44</sys_updated_on>
+        <sys_updated_on>2018-08-28 13:50:10</sys_updated_on>
     </sys_script_include>
 </record_update>

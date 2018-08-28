@@ -32,7 +32,7 @@
         <name>AngAlarmConsole</name>
         <option_schema/>
         <public>false</public>
-        <roles/>
+        <roles>x_agsa_sapcockpit.user</roles>
         <script><![CDATA[(function() {
 	data.alarmList =[];
 	var system=$sp.getParameter("system");
@@ -57,7 +57,7 @@
         <sys_created_on>2017-10-30 12:56:57</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>f19e1e32dbc607007bd0f13daf961943</sys_id>
-        <sys_mod_count>67</sys_mod_count>
+        <sys_mod_count>68</sys_mod_count>
         <sys_name>AngAlarmConsole</sys_name>
         <sys_package display_value="SAPCockpit" source="x_agsa_sapcockpit">e8dd70d1dbcacb407bd0f13daf96199c</sys_package>
         <sys_policy/>
@@ -65,7 +65,7 @@
         <sys_scope display_value="SAPCockpit">e8dd70d1dbcacb407bd0f13daf96199c</sys_scope>
         <sys_update_name>sp_widget_f19e1e32dbc607007bd0f13daf961943</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2018-06-19 09:14:58</sys_updated_on>
+        <sys_updated_on>2018-08-27 12:13:31</sys_updated_on>
         <template><![CDATA[<link href="f989cff14f4a430033e71aabb110c71b.cssdbx?" rel="stylesheet" type="text/css" />
 <!--<a href="" ng-click="showme=true">Hide Filter</a>
 <span class="wrapper">

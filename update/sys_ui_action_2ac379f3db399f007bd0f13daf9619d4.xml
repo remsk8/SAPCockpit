@@ -4,13 +4,13 @@
         <action_name>createIncident</action_name>
         <active>true</active>
         <client>false</client>
-        <comments/>
+        <comments>Create new Incident</comments>
         <condition/>
         <form_action>true</form_action>
         <form_button>true</form_button>
         <form_context_menu>false</form_context_menu>
         <form_link>false</form_link>
-        <form_style/>
+        <form_style>primary</form_style>
         <hint/>
         <list_action>false</list_action>
         <list_banner_button>false</list_banner_button>
@@ -22,13 +22,24 @@
         <list_style/>
         <name>Create New Incident </name>
         <onclick/>
-        <order>100</order>
-        <script><![CDATA[	var gr=new GlideRecord('incident');
-	gr.initialize();
-	gr.business_service='dad1ca3bdb799f007bd0f13daf961975';
-gr.caller_id="System Administrator";
-	gr.short_description=current.message;
+        <order>1000</order>
+        <script><![CDATA[createIncident();
+
+function createIncident() {
+	var cInc=new GlideRecord('incident');
+	cInc.initialize();
+	cInc.business_service=gs.getProperty('x_agsa_sapcockpit.business_service'); 
+	cInc.caller_id=gs.getUserID();
+	cInc.short_description=current.sid+' '+current.company+' -'+current.message;
+	cInc.description='<b>'+current.severity+' alarm for '+current.company+' on '+current.sid+'</b>';
+	cInc.description+='<br/>Raise Time: '+current.raise_time.getDisplayValue();
+	cInc.description+='<br/>Module: '+current.module;
+	cInc.description+='<br/>Host: '+current.host;
+	cInc.description+='<br/>Sid: '+current.sid;
+	cInc.description+='<br/>Message: '+current.message;
 	var value=gr.insert();
+}
+
 ]]></script>
         <show_insert>false</show_insert>
         <show_multiple_update>false</show_multiple_update>
@@ -41,7 +52,7 @@ gr.caller_id="System Administrator";
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>2ac379f3db399f007bd0f13daf9619d4</sys_id>
-        <sys_mod_count>12</sys_mod_count>
+        <sys_mod_count>16</sys_mod_count>
         <sys_name>Create New Incident </sys_name>
         <sys_overrides/>
         <sys_package display_value="SAPCockpit" source="x_agsa_sapcockpit">e8dd70d1dbcacb407bd0f13daf96199c</sys_package>
@@ -50,7 +61,7 @@ gr.caller_id="System Administrator";
         <sys_scope display_value="SAPCockpit">e8dd70d1dbcacb407bd0f13daf96199c</sys_scope>
         <sys_update_name>sys_ui_action_2ac379f3db399f007bd0f13daf9619d4</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2018-07-20 15:28:53</sys_updated_on>
+        <sys_updated_on>2018-08-28 09:02:23</sys_updated_on>
         <table>x_agsa_sapcockpit_alarm</table>
         <ui11_compatible>true</ui11_compatible>
         <ui16_compatible>true</ui16_compatible>
