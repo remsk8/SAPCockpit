@@ -127,7 +127,7 @@
 	
 	function getLastBck(target,metric) {
 		var delay='-1 minutes';
-		var lastUpd = new GlideRecord("x_agsa_sapcockpit_last_metric");
+		var lastUpd = new GlideRecordSecure("x_agsa_sapcockpit_last_metric");
 		lastUpd.addQuery('sid',system);
 		lastUpd.addQuery('metric',metric);
 		lastUpd.addQuery('target',target);
@@ -145,7 +145,7 @@
         <sys_created_on>2018-04-03 12:45:13</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>01aae838db9553407bd0f13daf96198b</sys_id>
-        <sys_mod_count>202</sys_mod_count>
+        <sys_mod_count>203</sys_mod_count>
         <sys_name>Hana View</sys_name>
         <sys_package display_value="SAPCockpit" source="x_agsa_sapcockpit">e8dd70d1dbcacb407bd0f13daf96199c</sys_package>
         <sys_policy/>
@@ -153,7 +153,7 @@
         <sys_scope display_value="SAPCockpit">e8dd70d1dbcacb407bd0f13daf96199c</sys_scope>
         <sys_update_name>sp_widget_01aae838db9553407bd0f13daf96198b</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2018-08-27 12:19:06</sys_updated_on>
+        <sys_updated_on>2018-08-30 13:47:42</sys_updated_on>
         <template><![CDATA[<link href="f989cff14f4a430033e71aabb110c71b.cssdbx?" rel="stylesheet" type="text/css" />
 <h1> {{data.system}} </h1>
 <table class='sstatus' sytle='width:30%;'>

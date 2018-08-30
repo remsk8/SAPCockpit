@@ -43,7 +43,7 @@
 	for (var i=0;i<system.length;i++) {
 		var obj={};
 		//getting name status company 
-		var nsc = new GlideRecord("x_agsa_sapcockpit_last_metric");
+		var nsc = new GlideRecordSecure("x_agsa_sapcockpit_last_metric");
 		nsc.addQuery('metric','SYSTEM_AVAILABILITY');
 		nsc.addQuery('sid',system[i].sid);
 		nsc.query();
@@ -75,7 +75,7 @@
 		}
 		
 		// getting severity
-		var getSev = new GlideRecord("x_agsa_sapcockpit_alarm");
+		var getSev = new GlideRecordSecure("x_agsa_sapcockpit_alarm");
 		getSev.addQuery('sid',system[i].sid);
 		getSev.addQuery('acknowledge','false');
 		getSev.orderByDesc('severity_code');
@@ -87,7 +87,7 @@
 		}
 		
 		// Get Last Metric
-		var lastUpd2 = new GlideRecord("x_agsa_sapcockpit_last_metric");
+		var lastUpd2 = new GlideRecordSecure("x_agsa_sapcockpit_last_metric");
 		lastUpd2.addQuery('sid',system[i].sid);
 		lastUpd2.orderByDesc('sys_updated_on');
 		lastUpd2.query();
@@ -98,7 +98,7 @@
 		// Add color depending on delay for Metrics
 		obj.number=getAlarmNumber(system[i].sid);
 		obj.numberToday=getAlarmNumber(system[i].sid,"days");
-		if (objs.type == 'NetWeaver') {
+		if (obj.type == 'NetWeaver') {
 			obj.lastreport=getLastReport(system[i].sid);
 		}
 		data.list.push(obj);
@@ -144,7 +144,7 @@
 	
 	function getLastReport(sid) {
 		var obj={};
-		var count = new GlideRecord('x_agsa_sapcockpit_report');
+		var count = new GlideRecordSecure('x_agsa_sapcockpit_report');
 		count.orderByDesc('sys_created_on');
 		count.addQuery('system_sid',sid);
 		count.query();
@@ -168,7 +168,7 @@
         <sys_created_on>2017-10-27 12:54:22</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>c2518b794f0a430033e71aabb110c789</sys_id>
-        <sys_mod_count>394</sys_mod_count>
+        <sys_mod_count>396</sys_mod_count>
         <sys_name>System Overview</sys_name>
         <sys_package display_value="SAPCockpit" source="x_agsa_sapcockpit">e8dd70d1dbcacb407bd0f13daf96199c</sys_package>
         <sys_policy/>
@@ -176,7 +176,7 @@
         <sys_scope display_value="SAPCockpit">e8dd70d1dbcacb407bd0f13daf96199c</sys_scope>
         <sys_update_name>sp_widget_c2518b794f0a430033e71aabb110c789</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2018-08-27 12:19:15</sys_updated_on>
+        <sys_updated_on>2018-08-30 13:49:11</sys_updated_on>
         <template><![CDATA[<link href="f989cff14f4a430033e71aabb110c71b.cssdbx?" rel="stylesheet" type="text/css" />
 <table class='sstatus' sytle='width:30%;'>
 	<thead>
