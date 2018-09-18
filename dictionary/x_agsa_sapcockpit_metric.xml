@@ -18,7 +18,7 @@
         <element label="MeasureTime" max_length="40" name="measuretime" type="string"/>
         <element label="Metric" max_length="100" name="metric" type="string"/>
         <element label="Module" max_length="100" name="module" type="string"/>
-        <element label="Name" max_length="100" name="name" type="string"/>
+        <element display="true" label="Name" max_length="100" name="name" type="string"/>
         <element label="SampleMax" max_length="100" name="samplemax" type="string"/>
         <element label="SampleRate" max_length="100" name="samplerate" type="string"/>
         <element label="Sid" max_length="40" name="sid" type="string"/>

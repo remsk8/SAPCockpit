@@ -16,7 +16,7 @@
         <element label="Locked Until" max_length="40" name="locked_until" type="glide_date_time"/>
         <element label="Message" max_length="400" name="message" type="string"/>
         <element label="Metric" max_length="100" name="metric" type="string"/>
-        <element label="Module" max_length="40" name="module" type="string"/>
+        <element display="true" label="Module" max_length="40" name="module" type="string"/>
         <element label="Module_Sid" max_length="40" name="module_sid" type="string"/>
         <element label="Raise Time" max_length="40" name="raise_time" type="glide_date_time"/>
         <element label="Severity" max_length="40" name="severity" type="string"/>
